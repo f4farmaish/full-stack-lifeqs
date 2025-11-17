@@ -1,0 +1,17 @@
+{
+  "name": "manage-inactive-groups",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "predeploy": "npm run build && tar -czvf function.tar.gz index.js config.js utils.js package.json"
+  },
+  "dependencies": {
+    "node-appwrite": "^19.0.0",
+    "resend": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.1",
+    "typescript": "^5.9.2"
+  }
+}

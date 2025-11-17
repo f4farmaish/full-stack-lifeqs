@@ -1,0 +1,1263 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Custom Properties for Theme System */
+:root {
+  /* Light Theme Colors */
+  --primary-500: #877EFF;
+  --primary-600: #5D5FEF;
+  --secondary-500: #FFB620;
+  --off-white: #D0DFFF;
+  --red: #FF5A5A;
+
+  /* Light Theme Background & Text */
+  --background-1: #FFFFFF;
+  --background-2: #F8F9FA;
+  --background-3: #E9ECEF;
+  --background-4: #DEE2E6;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-tertiary: #6C757D;
+  --text-quaternary: #ADB5BD;
+
+  /* Light Theme Utility Colors */
+  --bleu-1: #5291E1;
+  --pink-1: #fa25cb;
+  --silver: #6C757D;
+
+  /* Light Theme Category Colors */
+  --post-border: #28A745;
+  --post-bg: #F8FFF9;
+  --poll-border: #FD7E14;
+  --poll-bg: #FFF8F0;
+  --group-border: #6F42C1;
+  --group-bg: #F8F6FF;
+
+  /* Transition for smooth theme changes */
+  --transition-theme: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark {
+  /* Dark Theme Background & Text */
+  --background-1: #000000;
+  --background-2: #09090A;
+  --background-3: #101012;
+  --background-4: #1F1F22;
+  --text-primary: #FFFFFF;
+  --text-secondary: #EFEFEF;
+  --text-tertiary: #7878A3;
+  --text-quaternary: #5C5C7B;
+
+  /* Dark Theme Category Colors */
+  --post-border: #BCE3CB;
+  --post-bg: #2A3E32;
+  --poll-border: #FFCE9D;
+  --poll-bg: #3E342A;
+  --group-border: #D3B8F6;
+  --group-bg: #352A3E;
+}
+
+@layer base {
+  * {
+    @apply box-border list-none p-0 m-0 scroll-smooth;
+    transition: var(--transition-theme);
+  }
+
+  body {
+    @apply min-h-screen font-inter;
+    background-color: var(--background-1);
+    color: var(--text-primary);
+  }
+}
+
+@layer utilities {
+  /* TYPOGRAPHY */
+  .h1-bold {
+    @apply text-[36px] font-bold leading-[140%] tracking-tighter;
+  }
+
+  .h1-semibold {
+    @apply text-[36px] font-semibold leading-[140%] tracking-tighter;
+  }
+
+  .h2-bold {
+    @apply text-[30px] font-bold leading-[140%] tracking-tighter;
+  }
+
+  .h3-bold {
+    @apply text-[24px] font-bold leading-[140%] tracking-tighter;
+  }
+
+  .base-semibold {
+    @apply text-[16px] font-semibold leading-[140%] tracking-tighter;
+  }
+
+  .base-medium {
+    @apply text-[15px] font-medium leading-[140%];
+  }
+
+  .base-regular {
+    @apply text-[16px] font-normal leading-[140%];
+  }
+
+  .body-bold {
+    @apply text-[18px] font-bold leading-[140%];
+  }
+
+  .body-medium {
+    @apply text-[18px] font-medium leading-[140%];
+  }
+
+  .small-semibold {
+    @apply text-[14px] font-semibold leading-[140%] tracking-tighter;
+  }
+
+  .small-medium {
+    @apply text-[14px] font-medium leading-[140%];
+  }
+
+  .small-regular {
+    @apply text-[14px] font-normal leading-[140%];
+  }
+
+  .subtle-semibold {
+    @apply text-[12px] font-semibold leading-[140%];
+  }
+
+  .tiny-medium {
+    @apply text-[10px] font-medium leading-[140%];
+  }
+
+  /* THEME UTILITIES */
+  .theme-bg-1 {
+    background-color: var(--background-1);
+  }
+
+  .theme-bg-2 {
+    background-color: var(--background-2);
+  }
+
+  .theme-bg-3 {
+    background-color: var(--background-3);
+  }
+
+  .theme-bg-4 {
+    background-color: var(--background-4);
+  }
+
+  .theme-text-primary {
+    color: var(--text-primary);
+  }
+
+  .theme-text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .theme-text-tertiary {
+    color: var(--text-tertiary);
+  }
+
+  .theme-text-quaternary {
+    color: var(--text-quaternary);
+  }
+
+
+  /* UTILITIES */
+  .invert-white {
+    @apply invert brightness-0 transition;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .flex-start {
+    @apply flex justify-start items-center;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: #09090a;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #5c5c7b;
+    border-radius: 50px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #7878a3;
+  }
+
+  .common-container {
+    @apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-10 px-5 md:px-8 lg:p-14 custom-scrollbar;
+  }
+
+  /* All Users */
+  .user-container {
+    @apply max-w-5xl flex flex-col items-start w-full gap-6 md:gap-9;
+  }
+
+  .user-grid {
+    @apply w-full grid grid-cols-1 xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-7 max-w-5xl;
+  }
+
+  /* Explore */
+  .explore-container {
+    @apply flex flex-col flex-1 items-center overflow-scroll py-10 px-5 md:p-14 custom-scrollbar;
+  }
+
+  .explore-inner_container {
+    @apply max-w-5xl flex flex-col items-center w-full gap-6 md:gap-9;
+  }
+
+  .explore-search {
+    @apply h-12 bg-dark-4 border-none placeholder:text-light-4 focus-visible:ring-0 focus-visible:ring-offset-0 ring-offset-0 !important;
+  }
+
+  .home-container {
+    @apply flex flex-col flex-1 items-center gap-8 py-12 px-0; /* Removed overflow-scroll */
+    max-width: 100vw; /* Use full viewport width */
+    width: 100%;
+    margin: 0;
+    padding-left: env(safe-area-inset-left); /* Account for notches */
+    padding-right: env(safe-area-inset-right); /* Account for notches */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+
+  .home-posts {
+    @apply max-w-screen-sm flex flex-col items-center w-full gap-6 md:gap-9;
+  }
+
+  .home-creators {
+    @apply hidden xl:flex flex-col w-72 2xl:w-465 px-6 py-10 gap-10  overflow-scroll custom-scrollbar;
+  }
+
+  .post_details-container {
+    @apply flex flex-col flex-1 gap-5 px-5 pt-6 md:pt-8 md:px-10 custom-scrollbar items-center;
+  }
+  /* Post Card */
+  .post_details-card {
+    @apply rounded-[30px] flex flex-col border;
+    background-color: var(--background-2);
+    border-color: var(--background-4);
+    min-height: 300px;
+    width: 100%;
+    max-width: 1020px; /* Fixed width to match image posts */
+  }
+  /* Post Image */
+  .post_details-img {
+    @apply rounded-lg object-cover;
+    margin: 0 auto;
+    display: block;
+    padding: 0;
+    max-width: 100%; /* Ensure responsiveness */
+  }
+
+  /* Add new class for image-less posts */
+  .post_details-info.no-image {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  /* Category display */
+  .post-category-display {
+    @apply text-xs md:text-sm font-medium tracking-wide;
+    backdrop-filter: blur(4px);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+  }
+
+  /* Comments section alignment */
+  .comments-section {
+    width: 100%;
+    max-width: 1020px; /* Match post card width */
+    margin: 0 auto;
+  }
+
+  /* Ensure proper alignment on different screen sizes */
+  @media (min-width: 768px) {
+    .post_details-container {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+
+    .comments-section {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .post_details-container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    .comments-section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+  /* Ensure proper spacing for the new layout */
+  .post_details-info {
+    @apply flex flex-col gap-2 flex-1 items-start p-4 rounded-[30px];
+    background-color: var(--background-2);
+    margin-top: 0;
+  }
+
+  /* Delete Button */
+  .post_details-delete_btn {
+    @apply p-0 flex gap-3 hover:bg-transparent small-medium lg:base-medium;
+    color: var(--text-primary);
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  /* Caption Styling */
+  .post_details-caption {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    display: block;
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  /* Custom Scrollbar for caption only */
+  .post_details-caption::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .post_details-caption::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #5d5fef, #877eff);
+    border-radius: 4px;
+  }
+
+  .post_details-caption::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #5d5fef, #877eff);
+  }
+
+  .post_details-caption::-webkit-scrollbar-track {
+    background: #2b2b2b;
+    border-radius: 4px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Back Button (Mobile & Desktop) */
+  /* Optional cleanup if not used elsewhere */
+
+  @media (max-width: 767px) {
+    .back-button {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .back-button {
+      margin-top: 1rem;
+      margin-left: 0.25rem;
+    }
+  }
+
+  /* Profile */
+  .profile-container {
+    @apply flex flex-col items-center flex-1 gap-10 overflow-scroll py-10 px-5 md:p-14 custom-scrollbar;
+  }
+
+  .profile-inner_container {
+    @apply flex items-center md:mb-8 xl:items-start gap-8 flex-col xl:flex-row relative max-w-5xl w-full;
+  }
+
+  .profile-tab {
+    @apply flex-center gap-3 py-4 w-48 transition flex-1 xl:flex-initial;
+    background-color: var(--background-2);
+  }
+
+  /* Saved */
+  .saved-container {
+    @apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-10 px-5 md:p-2 custom-scrollbar;
+  }
+
+  /* Bottom bar */
+  .bottom-bar {
+    @apply z-50 flex-between w-full sticky bottom-0 rounded-t-[20px] px-5 py-4 md:hidden;
+    background-color: var(--background-2);
+  }
+
+  /* File uploader styles */
+
+  /* Uploaded image - separate styling */
+  .uploaded-image {
+    @apply rounded-t-[20px] object-contain object-center;
+  }
+
+  /* Replace text container - minimal padding for reduced gap */
+  .replace-text-container {
+    @apply flex items-center justify-center py-1 px-4 border-t;
+    background-color: color-mix(in srgb, var(--background-4) 50%, transparent);
+    border-top-color: var(--background-4);
+    min-height: 32px; /* Fixed minimal height */
+  }
+
+  /* Replace text - separate styling */
+  .replace-text {
+    @apply text-center small-regular;
+    color: var(--text-quaternary);
+    margin: 0; /* Remove any default margins */
+    padding: 0; /* Remove any default padding */
+  }
+
+  /* Delete image button */
+  .delete-image-btn {
+    @apply transition-all duration-200 ease-in-out;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  .delete-image-btn:hover {
+    @apply scale-110;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  }
+
+  .delete-image-btn:active {
+    @apply scale-95;
+  }
+
+  /* Original file uploader box (unchanged) */
+  .file_uploader-box {
+    @apply flex-center flex-col p-7 h-80 lg:h-[612px];
+  }
+
+  /* Left sidebar */
+  .leftsidebar {
+    @apply hidden md:flex px-6 py-4 flex-col justify-between min-w-[270px];
+    background-color: var(--background-2);
+  }
+
+  .leftsidebar-link {
+    @apply rounded-lg base-medium hover:bg-primary-500 transition;
+  }
+
+  /* Post Card */
+  .post-card {
+    @apply rounded-3xl border p-3 lg:p-4 w-full max-w-screen-sm;
+    background-color: var(--background-2);
+    border-color: var(--background-4);
+    height: auto; /* Allow card to shrink to content */
+  }
+
+  .post-card_img-container {
+    @apply relative w-full;
+    aspect-ratio: 18 / 9; /* Maintain consistent image proportions */
+  }
+
+  .post-card_img {
+    @apply w-full h-full rounded-[24px] object-cover;
+  }
+
+  /* Styling for image-less post cards */
+  .post-card-no-image {
+    @apply p-3 lg:p-4; /* Consistent padding with image cards */
+  }
+
+  /* Topbar */
+  .topbar {
+    @apply sticky top-0 z-50 md:hidden w-full;
+    background-color: var(--background-2);
+  }
+
+  /* ... Previous imports and base styles unchanged ... */
+
+  @layer utilities {
+    /* ... Previous utilities unchanged ... */
+
+    /* User card */
+    .user-card {
+      @apply flex-center flex-col gap-4 border rounded-[20px] px-5 py-8;
+      border-color: var(--background-4);
+    }
+
+    /* Custom styling for PostStats buttons in PostCard */
+    .post-stats-container {
+      @apply w-full;
+    }
+
+    .post-stats-container > div.relative > div.flex {
+      @apply items-center gap-6 justify-start;
+    }
+    .post-stats-container > div.relative > div.flex > div {
+      @apply mr-0;
+    }
+
+    @media (max-width: 768px) {
+      .post-stats-container > div.relative > div.flex {
+        @apply gap-4; /* Smaller gap on mobile devices */
+      }
+    }
+
+    @media (max-width: 480px) {
+      .post-stats-container > div.relative > div.flex {
+        @apply gap-3; /* Even smaller gap on very small devices */
+      }
+    }
+  }
+}
+@layer utilities {
+  /* Comment Form Styling */
+  .comment-form {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Desktop: Align with post_details-card */
+  @media (min-width: 768px) {
+    .comment-form {
+      @apply max-w-5xl mx-auto px-6 py-4;
+    }
+  }
+
+  /* Mobile: Preserve compact spacing */
+  @media (max-width: 767px) {
+    .comment-form {
+      @apply px-3 py-2;
+    }
+  }
+}
+@layer components {
+  /* SHADCN COMPONENTS */
+  /* Form */
+  .shad-form_label {
+    @apply font-semibold mb-2 !important;
+    color: var(--text-primary);
+  }
+
+  .shad-form_message {
+    @apply !important;
+    color: var(--red);
+  }
+
+  .shad-input {
+    @apply h-12 border-none focus-visible:ring-1 focus-visible:ring-offset-1 !important;
+    background-color: var(--background-4);
+    color: var(--text-primary);
+    &::placeholder {
+      color: var(--text-quaternary);
+    }
+    &:focus-visible {
+      ring-offset-color: var(--text-tertiary);
+    }
+  }
+
+  .shad-textarea {
+    @apply h-48 rounded-xl border-none focus-visible:ring-1 focus-visible:ring-offset-1 !important;
+    background-color: var(--background-3);
+    color: var(--text-primary);
+    &:focus-visible {
+      ring-offset-color: var(--text-tertiary);
+    }
+  }
+
+  /* Button */
+  .shad-button_primary {
+    @apply flex gap-2 !important;
+    background-color: var(--primary-500);
+    color: var(--text-primary);
+    &:hover {
+      background-color: var(--primary-600);
+    }
+  }
+
+  .shad-button_dark_4 {
+    @apply h-8 px-5 flex gap-2 !important;
+    background-color: var(--background-4);
+    color: var(--text-primary);
+  }
+
+  .shad-button_ghost {
+    @apply flex gap-4 items-center justify-start hover:bg-transparent !important;
+    color: var(--text-primary);
+    &:hover {
+      color: var(--text-primary);
+    }
+  }
+
+  /* Locate this part in your CSS file */
+  .image-container {
+    @apply relative w-full overflow-hidden rounded-t-lg;
+    aspect-ratio: 16 / 9; /* Maintain aspect ratio */
+    height: auto; /* Ensure height is auto to fit content */
+  }
+
+  .image-content {
+    @apply absolute top-0 left-0 w-full h-full object-cover; /* Adapte l'image au cadre */
+  }
+
+  /* GridPostList et CategoryPosts*/
+  /* Grid Post List */
+
+  @layer utilities {
+    .grid-post_link {
+      @apply flex rounded-[24px] border border-dark-4 overflow-hidden cursor-pointer w-full h-full;
+    }
+
+    .grid-post_user {
+      @apply absolute bottom-0 p-5 flex-between w-full bg-gradient-to-t from-dark-3 to-transparent rounded-b-[24px] gap-2;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4 columns for desktop */
+      gap: 8px; /* Consistent spacing */
+      width: 100%; /* Full width */
+      margin: 0 auto; /* Center without width restriction */
+    }
+
+    /* Adaptation pour les grands écrans */
+    @media (max-width: 1200px) {
+      .grid-container {
+        grid-template-columns: repeat(
+          3,
+          1fr
+        ); /* 3 colonnes pour écrans moyens */
+      }
+    }
+
+    /* Adaptation pour les écrans moyens */
+    @media (max-width: 900px) {
+      .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes pour tablettes */
+      }
+    }
+
+    /* Adaptation pour les petits écrans */
+    @media (max-width: 600px) {
+      .grid-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 colonne pour mobiles */
+      }
+    }
+
+    .post-card {
+      @apply shadow-lg transition-shadow duration-300 hover:shadow-2xl;
+      padding: 8px !important; /* Réduction des espaces internes dans les cartes */
+      margin: 0; /* Suppression des marges autour des cartes */
+    }
+
+    .image-container {
+      @apply relative w-full overflow-hidden rounded-t-lg;
+      aspect-ratio: 16 / 9;
+      transition: transform 0.3s ease;
+    }
+
+    .image-container:hover {
+      transform: scale(1.05);
+    }
+
+    .image-content {
+      @apply absolute top-0 left-0 w-full h-full object-cover;
+    }
+
+    .user-stats-spacing {
+      margin-bottom: -0.5rem; /* Réduction de l'espacement sous le nom */
+    }
+  }
+
+  /* Grid container pour GridPostList */
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(250px, 1fr)
+    ); /* Flexible columns */
+    gap: 1rem; /* Spacing between posts */
+    align-items: stretch; /* Ensure all tiles stretch to match height */
+  }
+
+  /* Post-card avec taille dynamique */
+  .post-card {
+    background: #1a1a1a;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 1rem;
+    transition:
+      box-shadow 0.3s,
+      transform 0.3s;
+    height: auto; /* Taille dépendante du contenu */
+  }
+
+  /* Grille dynamique : certaines cartes plus grandes */
+  .post-card.large {
+    grid-column: span 2; /* Post occupe 2 colonnes */
+  }
+
+  .post-card:hover {
+    transform: none; /* Désactive le déplacement */
+    box-shadow: none; /* Optionnel, si vous ne souhaitez pas changer l'ombre */
+  }
+
+  /* Image et contenu */
+  .post-card .image-container {
+    width: 100%;
+    aspect-ratio: 16/9; /* Maintient le ratio des images */
+    overflow: hidden;
+  }
+
+  .post-card .image-content {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .topic-card {
+    @apply flex items-center justify-center;
+    padding: 6px 8px;
+    background-color: var(--background-2);
+    border: 1px solid var(--background-4);
+    color: var(--text-primary);
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    min-width: 242px;
+    height: 45px;
+    margin: 0 2px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+
+    /* Effet de bordure animée */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 8px;
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0)
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Fond animé au survol */
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 100%
+      );
+      z-index: -1;
+      transform: translateY(100%);
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+  }
+
+  .topic-card:hover {
+    background-color: var(--background-3);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    &::before {
+      opacity: 1;
+    }
+
+    &::after {
+      transform: translateY(0);
+    }
+  }
+
+  .topic-card:active {
+    transform: translateY(0) scale(0.98);
+    transition-duration: 0.1s;
+  }
+
+  /* Variante avec effet "flottant" */
+  .topic-card.float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
+  /* Variante avec effet "energie" au survol */
+  .topic-card.energy:hover::after {
+    background: linear-gradient(
+      135deg,
+      rgba(135, 126, 255, 0.1) 0%,
+      rgba(135, 126, 255, 0.05) 50%,
+      transparent 100%
+    );
+  }
+
+  /* Augmentation de l'espace horizontal et réduction de l'espace vertical */
+  .grid {
+    display: grid;
+    column-gap: 40px; /* Espace horizontal augmenté */
+    row-gap: 8px; /* Espace vertical réduit */
+  }
+
+  @media (min-width: 640px) {
+    .grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .topics-list-container {
+    @apply flex flex-col flex-1 items-center gap-8 py-3 px-0; /* Removed overflow-scroll */
+    max-width: 100vw; /* Use full viewport width */
+    width: 100%;
+    margin: 0;
+    padding-left: env(safe-area-inset-left); /* Account for notches */
+    padding-right: env(safe-area-inset-right); /* Account for notches */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  /* Pour s'assurer que le contenu enfant ne dépasse pas */
+
+  .home-container .relative {
+    @apply max-w-screen-lg mx-auto my-2 -mb-2; /* Reduced margins for separator */
+  }
+  .grid-container {
+    @apply max-w-screen-lg mx-auto;
+  }
+
+  .break-words {
+    word-break: break-word; /* Coupe le mot s'il est trop long */
+    white-space: pre-wrap; /* Respecte les sauts de ligne */
+  }
+  .category-filters-grid {
+    @apply grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr)); /* Equal-width columns */
+    gap: 9px; /* row-gap: 0, column-gap: 1.5rem */
+    width: 100%;
+    padding: 0 -2rem; /* Symmetric padding */
+    margin: 0 auto;
+    justify-items: center; /* Center each item in its cell */
+  }
+
+  .subcategory-filters-grid {
+    @apply grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr)); /* Equal-width columns */
+    gap: 9px; /* row-gap: 0, column-gap: 1.5rem */
+    width: 100%;
+    padding: 0 -2rem; /* Symmetric padding */
+    margin: 0 auto;
+    justify-items: center; /* Center each item in its cell */
+  }
+
+  .subcategory-filters-grid-centered {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4;
+    gap: 9px; /* row-gap: 0, column-gap: 1.5rem */
+    width: 100%;
+    padding: 0 -2rem; /* Symmetric padding */
+    margin: 0 auto;
+    justify-items: center; /* Center each item in its cell */
+  }
+
+  @layer utilities {
+    /* General mobile adjustments */
+    @media (max-width: 768px) {
+      .home-container {
+        @apply px-4 py-6;
+      }
+
+      .home-posts {
+        @apply gap-4;
+      }
+
+      .home-creators {
+        @apply hidden;
+      }
+
+      .post-card {
+        @apply rounded-lg p-4 flex flex-col gap-4;
+      }
+
+      .post-card_img {
+        @apply h-48 w-full object-cover rounded-lg;
+      }
+
+      .post-card_content {
+        @apply flex flex-col gap-2;
+      }
+
+      /* For mobile devices with notches */
+
+      /* Mobile responsive adjustment */
+      @media (max-width: 768px) {
+        .active-category-title {
+          margin: 0.5rem auto;
+        }
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* 1 column for mobile */
+        gap: 16px;
+      }
+
+      .post-details-container {
+        @apply px-4 py-6;
+      }
+
+      .post-details-img {
+        @apply h-56;
+      }
+
+      .profile-container {
+        @apply px-4 py-6;
+      }
+    }
+
+    /* Tablet adjustments */
+    @media (max-width: 1024px) {
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+        gap: 20px;
+      }
+
+      .home-posts {
+        @apply gap-6;
+      }
+    }
+
+    /* Small desktop adjustments */
+    @media (max-width: 1280px) {
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(
+          3,
+          1fr
+        ); /* 3 columns for small desktops */
+        gap: 24px;
+      }
+    }
+
+    /* Additional adjustments for smaller devices */
+    @media (max-width: 600px) {
+      .home-container {
+        @apply gap-4;
+      }
+
+      /* Grid for subcategories: max 6 per row */
+
+      /* Responsive adjustments for category and subcategory grids */
+
+      @media (max-width: 600px) {
+      }
+      /* Responsive adjustments for category and subcategory grids */
+      @media (max-width: 1024px) {
+      }
+      @media (max-width: 600px) {
+      }
+
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(
+          1,
+          1fr
+        ); /* 1 column for smaller devices */
+        gap: 12px;
+      }
+
+      .post-card {
+        @apply mb-4;
+      }
+
+      .profile-container {
+        @apply gap-6;
+      }
+    }
+
+    /* GridPostList specific adjustments */
+    @media (max-width: 768px) {
+      .grid-post_link {
+        @apply flex flex-col gap-3;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 8px;
+      }
+
+      .grid-post_user {
+        @apply flex flex-col items-start;
+      }
+
+      .post-card {
+        @apply p-4 rounded-lg;
+      }
+
+      .post-card_img {
+        @apply h-40;
+        border-radius: 8px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .grid-post_link {
+        @apply flex flex-col gap-4;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 12px;
+      }
+
+      .post-card_img {
+        @apply h-48;
+        border-radius: 12px;
+      }
+    }
+
+    /* Specific fix for 1 column on mobile */
+    @media (max-width: 768px) {
+      .columns-4 {
+        @apply grid grid-cols-1 gap-4; /* Ensure 1 column on mobile */
+      }
+    }
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #1e90ff; /* Scroll thumb color */
+    border-radius: 10px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background-color: #2c2f33; /* Scroll track color */
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 7px; /* Largeur de la barre de défilement */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #877eff; /* Couleur de la barre de défilement */
+  border-radius: 4px; /* Coins arrondis */
+  transition: background 0.3s ease; /* Transition fluide */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #5d5fef; /* Couleur de la barre de défilement au survol */
+}
+
+/* Poll Card Details */
+
+.poll-card-img {
+  @apply w-full max-w-[300px] aspect-square rounded-lg overflow-hidden;
+}
+.poll-content-row {
+  @apply flex flex-col md:flex-row;
+}
+/* Category display below image */
+.poll-category-display {
+  @apply text-xs font-medium tracking-wide px-2;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.poll-option {
+  @apply flex items-center justify-between p-1.5 rounded-lg transition-colors;
+  background-color: var(--background-3);
+}
+/* Main content container with constrained width and centered */
+.main-content-container {
+  @apply w-full max-w-[100%] mx-auto;
+}
+
+/* Flex container for main content and ads */
+.content-with-ads {
+  @apply flex justify-center items-start gap-4;
+}
+
+/* Ad tile styling to match GridPostList tiles */
+.ad-tile {
+  @apply rounded-3xl border p-3 flex-shrink-0;
+  background-color: var(--background-2);
+  border-color: var(--background-4);
+  width: 230px; /* Matches the minimum width of GridPostList tiles */
+  height: 280px; /* Matches the height of GridPostList tiles dynamically */
+}
+
+/* Responsive adjustments for ad tiles */
+@media (max-width: 1024px) {
+  .ad-tile {
+    @apply hidden; /* Hide ads on smaller screens */
+  }
+  .content-with-ads {
+    @apply flex-col; /* Stack content vertically on smaller screens */
+  }
+  .main-content-container {
+    @apply max-w-full; /* Allow main content to take full width when ads are hidden */
+  }
+}
+/* Active category title styles - completely independent */
+.active-category-title-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.active-category-title {
+  background-color: var(--background-3);
+  color: var(--primary-500);
+  border-radius: 0.375rem; /* rounded-md */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  padding: 0.25rem 1rem;
+  margin: 0.5rem 0 1.5rem;
+  width: fit-content;
+  min-width: 495px; /* Increase width for highlighted category */
+}
+
+.active-category-text {
+  font-size: 1.2rem; /* text-lg */
+  font-weight: 500; /* font-medium */
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .active-category-title {
+    margin: 0.5rem 0;
+  }
+}
+/*===========================================================================================*/
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .category-filters-grid,
+  .subcategory-filters-grid,
+  .subcategory-filters-grid-centered {
+    grid-template-columns: repeat(
+      2,
+      minmax(150px, 1fr)
+    ); /* Two columns on mobile */
+    gap: 6px; /* Tighter spacing */
+    padding: 0 0.5rem; /* Minimal padding */
+  }
+
+  .topic-card {
+    min-width: 0; /* Allow cards to fit within grid columns */
+    width: 100%; /* Full width of grid column */
+    height: 48px; /* Taller for touch targets */
+    font-size: 12px; /* Slightly smaller font for fit */
+  }
+
+  .home-container {
+    @apply px-2 py-4 gap-6; /* Tighter padding and spacing */
+  }
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+  .category-filters-grid,
+  .subcategory-filters-grid,
+  .subcategory-filters-grid-centered {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    ); /* Smaller min-width for tablets */
+    gap: 8px;
+    padding: 0 1rem;
+  }
+
+  .topic-card {
+    min-width: 180px; /* Adjust for tablet */
+    height: 44px; /* Slightly taller */
+  }
+
+  .content-with-ads {
+    @apply flex-col; /* Stack vertically on tablets */
+  }
+}
+
+/* Ensure desktop layout remains unchanged */
+@media (min-width: 1025px) {
+  .category-filters-grid,
+  .subcategory-filters-grid {
+    grid-template-columns: repeat(6, 1fr); /* 6 columns for desktop */
+  }
+
+  .subcategory-filters-grid-centered {
+    grid-template-columns: repeat(
+      4,
+      1fr
+    ); /* 4 columns for centered subcategories */
+  }
+}
+/* Add these styles to your globals.css if not already present */
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #5c5c7b;
+  border-radius: 50px;
+  border: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #7878a3;
+}

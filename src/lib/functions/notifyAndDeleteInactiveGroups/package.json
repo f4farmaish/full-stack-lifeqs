@@ -1,0 +1,17 @@
+{
+  "name": "notify-and-delete-inactive-groups",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "predeploy": "npm run build && tar -czvf function.tar.gz index.js config.js utils.js package.json"
+  },
+  "dependencies": {
+    "node-appwrite": "^15.0.1",
+    "resend": "^4.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  }
+}

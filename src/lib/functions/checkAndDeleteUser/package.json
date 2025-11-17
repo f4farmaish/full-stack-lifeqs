@@ -1,0 +1,16 @@
+{
+  "name": "check-and-delete-user",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "predeploy": "npm run build && tar -czvf function.tar.gz index.js config.js package.json"
+  },
+  "dependencies": {
+    "node-appwrite": "^15.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,95 @@
+# Merge Request: Block User Feature & UI Improvements
+
+## Summary
+This MR implements a comprehensive block user functionality and several UI enhancements to improve user experience and safety on the Lifeqs platform.
+
+## Features Implemented
+
+### 🚫 Block User Functionality
+
+#### Core Features
+- Users can block/unblock other users from their profile page
+- Blocked users list accessible at `/profile/{userId}/blocked`
+- Real-time updates when blocking/unblocking users
+
+#### Content Filtering
+- **Posts & Polls**: Blocked users' content is automatically filtered from:
+  - Home feed
+  - Questions page
+  - All content feeds using `fetchCombinedContent` and `getInfinitePosts`
+
+#### Comments & Replies
+- Blocked users' comments show as "Blocked User" with:
+  - Generic placeholder avatar
+  - Hidden comment content: "[This comment is from a blocked user]"
+  - No interaction options (like, reply, reactions)
+- Same treatment applied to replies
+
+### 🔗 UI Improvements
+
+#### Clickable Category Titles
+- Category titles on posts and polls are now clickable
+- Clicking navigates to home page with category filter applied
+- Works across all pages (not just home)
+
+#### Clickable User Profiles
+- Username and profile picture in comments/replies are clickable
+- Blocked users list: Avatar and name are clickable, navigate to profile
+- Clicking navigates to user's profile page
+- Protected cases: Anonymous and blocked users remain non-clickable in comments
+
+#### Message Blocking
+- Users cannot send messages to blocked users
+- Users cannot receive messages from users they've blocked
+- Conversations list filters out blocked users
+- Chat page shows appropriate message when trying to access blocked user's chat
+- Different messages for "You blocked this user" vs "This user blocked you"
+
+### 🔧 Technical Improvements
+
+#### Query Optimization
+- Added `currentUserId` parameter to content fetching functions
+- Implemented server-side filtering for blocked content
+- Proper cache invalidation when blocking/unblocking
+
+#### Bug Fixes
+- Fixed unblock button missing `unblock: true` parameter
+- Fixed profile navigation using correct `userIdString` property
+- Added proper TypeScript types and error handling
+
+## Code Changes
+
+### Modified Files
+- `services/postService.ts` - Added blocked user filtering
+- `services/blockService.ts` - Core blocking functionality
+- `components/comments/CommentItem.tsx` - Blocked user display
+- `components/comments/ReplyItem.tsx` - Blocked user display
+- `components/shared/PostCard.tsx` - Clickable categories
+- `components/shared/PollCardDetails.tsx` - Clickable categories
+- `components/shared/BlockedUsersList.tsx` - Clickable user profiles
+- `components/messages/Conversations.tsx` - Filter blocked users from chat list
+- `hooks/useSendMessage.ts` - Prevent messages between blocked users
+- `_root/pages/ChatPage.tsx` - Show blocked UI when users block each other
+- `lib/react-query/queries.ts` - Updated queries with user context
+- `_root/pages/Profile.tsx` - Fixed unblock button
+
+## Testing Checklist
+- [ ] Block a user and verify their posts disappear from feeds
+- [ ] Check that blocked users show as "Blocked User" in comments
+- [ ] Test unblocking from user profile
+- [ ] Test unblocking from blocked users list
+- [ ] Click on category titles and verify filtering works
+- [ ] Click on usernames/avatars in comments to navigate to profiles
+- [ ] Verify anonymous users can't be clicked in comments
+- [ ] Block a user and verify they disappear from conversations list
+- [ ] Try to send message to blocked user - should show error
+- [ ] Navigate to chat with blocked user - should show blocked UI
+- [ ] Verify different messages for "You blocked" vs "They blocked you"
+
+## Screenshots/Demo
+[Add screenshots if available]
+
+## Notes
+- All changes maintain backward compatibility
+- No database schema changes required
+- Performance impact is minimal due to efficient filtering
